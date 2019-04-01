@@ -73,7 +73,7 @@ main repository for lab works
 <b>РОБОТА ІНТЕРПРИТАТОРА:</b>
 
 Семантичний аналізатор: знищує пробіли, розбива на лексеми: 
-<b>ReservedMainWords, ReservedHelpWords, AccessWords, Limiters, CommandLimiters, AccessLimiters, Delimiters, KeyTextWords, KeyDigitWords
+<br>ReservedMainWords, ReservedHelpWords, AccessWords, Limiters, CommandLimiters, AccessLimiters, Delimiters, KeyTextWords, KeyDigitWords
 
 Синтаксичний аналізатор: перевіряє порядок та відповідність лексем в команді, перевіряє необхідну та допустиму кількість AccessWords, дивиться на правильність конструювання параметрів виборки. В разі виникнення помилок, підраховує кількість та для кожної виводить підказку. 
 
