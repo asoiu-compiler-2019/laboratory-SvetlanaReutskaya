@@ -1,0 +1,7 @@
+C:\Users\Acer\source\repos\Language\Language\bin\Debug\Language.exe.config
+C:\Users\Acer\source\repos\Language\Language\bin\Debug\Language.exe
+C:\Users\Acer\source\repos\Language\Language\bin\Debug\Language.pdb
+C:\Users\Acer\source\repos\Language\Language\obj\Debug\Language.csprojAssemblyReference.cache
+C:\Users\Acer\source\repos\Language\Language\obj\Debug\Language.csproj.CoreCompileInputs.cache
+C:\Users\Acer\source\repos\Language\Language\obj\Debug\Language.exe
+C:\Users\Acer\source\repos\Language\Language\obj\Debug\Language.pdb

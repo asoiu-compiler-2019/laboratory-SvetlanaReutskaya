@@ -1,0 +1,17 @@
+Create: Pacient(1);
+Create: Region(Code == 1 && Name == Kyiv);
+Create: Pacient(Code == 2 && Name == Sveta && Age==25);
+Create: Disease(Code == 1 && Name == Des1);
+Create: Medicine(Code == 1 && Name == Med1);
+Bind: Region(1) With: Pacient(1);
+Bind: Region(1) With: Pacient(2);
+Bind: Disease(1) With: Pacient(1);
+Bind: Disease(1) With: Pacient(Age ~~ 23);
+Bind: Medicine(1) With: Pacient(1) Disease(1);
+Unbind: Medicine(1) With: Pacient(1) Disease(1);
+GetAll: Region(1) Disease(1) Check: Count(2);
+GetAll: Region(1) Disease(1) Check: Count(1);
+GetAll: Disease(Name==Des1) Check: Pacient(Name!=Sveta) Count(1);
+GetAll: Disease(Name==Des1) Check: Pacient(Age==25) Count(1);
+Delete: Pacient(Name == Sveta);
+GetAll: Region(1) Check: Pacient(Name ~~ Sve);
