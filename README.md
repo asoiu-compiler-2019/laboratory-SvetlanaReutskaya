@@ -15,70 +15,70 @@ main repository for lab works
 <br>•	База даних повинна бути централізована.
 
 Дані в базі системи:
-•	Паціент (Code, Name, Age, Region)
-•	Хвороба (Code, Name, Heavy)
-•	Ліки (Code, Name)
-•	Регіон (Code, Name)
+<br>•	Паціент (Code, Name, Age, Region)
+<br>•	Хвороба (Code, Name, Heavy)
+<br>•	Ліки (Code, Name)
+<br>•	Регіон (Code, Name)
 Кожен паціен привязаний до свого регіону, а також може мати декілька хвороб. Для кожної хвороби можуть бути призначені ліки. Програма передбачає можливість змінити дані про кожного паціента, а також отримати звіт взалежності від заданих параметрів фільтрації.
 
 ПРО МОВУ:
 В подальшому можливе розширення функціоналу системи, тому необхідно вирішити питання про створення автоматизованих тестів, які забезпечать стабільну роботу базових функцій програми, а саме:
-•	Збереження, редагування і видалення даних про хворого, хворобу і ліки;
-•	Створення коректних звязків між даними для подальшого відображення їх у звітності;
+<br>•	Збереження, редагування і видалення даних про хворого, хворобу і ліки;
+<br>•	Створення коректних звязків між даними для подальшого відображення їх у звітності;
 
 Було розроблено мову програмування MedL, зрозумілу для звичайного користувача пк. Це дає змогу не витрачати додатковий час на розробку автотестів, а також полегшує швидкість їх зміни. Дані тести можуть писати та змінювати не лише програмісти, а й тестувальники, користувачі системи.
 
 Команди мови MedL:
-  •	Create: <obj>
+<br>  •	Create: <obj>
     Команда створення обєкту в програмі. Замість <obj> можна створити Pacient, Region, Medicine, Disease.   
     Вертає результат роботи.
-  •	Delete: <obj>
+<br>  •	Delete: <obj>
     Команда знищення обєкту в програмі. Замість <obj> можна створити Pacient, Region, Medicine, Disease. Разом з обєктом знищуються усі повязані з ним звязки
     Вертає результат роботи.
-  •	Bind: <obj1> With: <obj2>
+<br>  •	Bind: <obj1> With: <obj2>
     Команда створення звязків в програмі. Замість <obj1> можна підставити Region, Medicine, Disease. Замість <obj2> необхідно підставити Pacient (можливі виборки з декількох обєктів одного типу) та Disease.
     Вертає результат роботи.
-  •	Unbind: <obj1> With: <obj2>
+<br>  •	Unbind: <obj1> With: <obj2>
     Команда знищення звязків в програмі. Замість <obj1> можна підставити Region, Medicine, Disease. Замість <obj2> необхідно підставити     Pacient (можливі виборки з декількох обєктів одного типу) та Disease.
     Вертає результат роботи.
-  •	GetAll: <path1> Check: <obj1>
+<br>  •	GetAll: <path1> Check: <obj1>
     Команда перевірки коректності вибірки по системі (також звязків, своєчасних видалень та створень обєктів). Замість <path1> необхідно      підставити обєкт <obj> (за потреби - кілька різних (можливі виборки з декількох обєктів одного типу)), замість <obj1> Pacient(можливі виборки з декількох обєктів одного типу) або Check (за потреби обидва).
     Вертає true/false.
 Для кожного <obj> вказуються параметри у () виду <param>==<value>. У випадках, зазначених вище як "можливі виборки з декількох", замість знака == можна поставити != та ~~ (приблизно рівне). В протилежному випадку - необхідна обовязкова присутність параметра Code.
 
 ПРИКАД ПРОГРАМИ:
-        Create: Pacient(1);
-        Create: Region(Code == 1 && Name == Kyiv);
-        Create: Pacient(Code == 2 && Name == Sveta && Age==25);
-        Create: Disease(Code == 1 && Name == Des1);
-        Create: Medicine(Code == 1 && Name == Med1);
-        Bind: Region(1) With: Pacient(1);
-        Bind: Region(1) With: Pacient(2);
-        Bind: Disease(1) With: Pacient(1);
-        Bind: Disease(1) With: Pacient(Age ~~ 23);
-        Bind: Medicine(1) With: Pacient(1) Disease(1);
-        Unbind: Medicine(1) With: Pacient(1) Disease(1);
-        GetAll: Region(1) Disease(1) Check: Count(2);
-        GetAll: Region(1) Disease(1) Check: Count(1);
-        GetAll: Disease(Name==Des1) Check: Pacient(Name!=Sveta) Count(1);
-        GetAll: Disease(Name==Des1) Check: Pacient(Age==25) Count(1);
-        Delete: Pacient(Name == Sveta);
-        GetAll: Region(1) Check: Pacient(Name ~~ Sve);
+<br>        Create: Pacient(1);
+<br>        Create: Region(Code == 1 && Name == Kyiv);
+<br>        Create: Pacient(Code == 2 && Name == Sveta && Age==25);
+<br>        Create: Disease(Code == 1 && Name == Des1);
+<br>        Create: Medicine(Code == 1 && Name == Med1);
+<br>       Bind: Region(1) With: Pacient(1);
+<br>       Bind: Region(1) With: Pacient(2);
+<br>        Bind: Disease(1) With: Pacient(1);
+<br>        Bind: Disease(1) With: Pacient(Age ~~ 23);
+<br>        Bind: Medicine(1) With: Pacient(1) Disease(1);
+<br>        Unbind: Medicine(1) With: Pacient(1) Disease(1);
+<br>        GetAll: Region(1) Disease(1) Check: Count(2);
+<br>        GetAll: Region(1) Disease(1) Check: Count(1);
+<br>        GetAll: Disease(Name==Des1) Check: Pacient(Name!=Sveta) Count(1);
+<br>        GetAll: Disease(Name==Des1) Check: Pacient(Age==25) Count(1);
+<br>        Delete: Pacient(Name == Sveta);
+<br>        GetAll: Region(1) Check: Pacient(Name ~~ Sve);
 РЕЗУЛЬТАТ ПРОГРАМИ:
-        Added sucsessfully
-        Added sucsessfully
-        Added sucsessfully
-        Added sucsessfully
-        Added sucsessfully
-        binded sucsessfully
-        binded sucsessfully
-        binded sucsessfully
-        binded sucsessfully
-        binded sucsessfully
-        unbinded sucsessfully
-        true
-        false
-        true
-        true
-        deleted sucsessfully
-        false
+<br>        Added sucsessfully
+<br>        Added sucsessfully
+<br>       Added sucsessfully
+<br>        Added sucsessfully
+<br>        Added sucsessfully
+<br>        binded sucsessfully
+<br>        binded sucsessfully
+<br>        binded sucsessfully
+<br>        binded sucsessfully
+<br>        binded sucsessfully
+<br>        unbinded sucsessfully
+<br>        true
+<br>        false
+<br>        true
+<br>        true
+<br>        deleted sucsessfully
+<br>        false
